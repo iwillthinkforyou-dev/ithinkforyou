@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>I THINK FOR YOU — A Third-Person Perspective</title>
-  <meta name="description" content="Sometimes you're too close to a problem to see it clearly. Tell us what's going on and get a thoughtful third-person perspective.">
+
+  <meta name="description" content="Sometimes you're too close to a problem to see it clearly. Tell your story and receive a thoughtful human Third Person Perspective.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap');
-
     :root {
       --ink: #171717;
       --muted: #66635e;
@@ -17,6 +20,8 @@
       --paper: #fffdf9;
       --accent: #8b6f47;
       --line: #ddd7cd;
+      --soft: #ebe4d7;
+      --black: #171717;
     }
 
     * {
@@ -42,17 +47,19 @@
     }
 
     .container {
-      width: min(1120px, calc(100% - 40px));
+      width: min(1120px, calc(100% - 48px));
       margin: auto;
     }
 
     /* NAVIGATION */
 
     nav {
-      padding: 28px 0;
       position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       z-index: 10;
+      padding: 28px 0;
     }
 
     .nav-inner {
@@ -62,218 +69,383 @@
     }
 
     .logo {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: .08em;
     }
 
     .nav-link {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--muted);
+    }
+
+    /* TYPOGRAPHY */
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      letter-spacing: -.035em;
+      line-height: .98;
+    }
+
+    h1 {
+      font-size: clamp(58px, 7vw, 92px);
+      max-width: 760px;
+    }
+
+    h2 {
+      font-size: clamp(46px, 5vw, 68px);
+    }
+
+    h3 {
+      font-size: 29px;
+    }
+
+    .body-large {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 620px;
+    }
+
+    /* BUTTON */
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--ink);
+      color: white;
+      padding: 18px 25px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      opacity: .9;
+    }
+
+    .button span {
+      font-size: 17px;
     }
 
     /* HERO */
 
     .hero {
-      min-height: 92vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       position: relative;
       overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 520px;
-      height: 520px;
-      border-radius: 50%;
-      background: #e8e0d2;
-      right: -150px;
-      top: 120px;
-      opacity: 0.7;
+      padding: 150px 0 110px;
     }
 
     .hero-content {
-      max-width: 850px;
       position: relative;
       z-index: 2;
-      padding-top: 70px;
     }
 
-    .eyebrow {
-      font-size: 13px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 28px;
-      font-weight: 600;
-    }
-
-    h1 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(54px, 8vw, 96px);
-      line-height: 0.98;
-      font-weight: 500;
-      letter-spacing: -0.04em;
-      max-width: 850px;
+    .hero h1 {
+      margin-bottom: 34px;
     }
 
     .hero-copy {
-      max-width: 620px;
-      font-size: 20px;
+      margin-bottom: 32px;
+      max-width: 650px;
+    }
+
+    .hero-copy p {
+      font-size: 18px;
       color: var(--muted);
-      margin-top: 32px;
+      max-width: 600px;
     }
 
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--ink);
-      color: white;
-      padding: 17px 25px;
-      border-radius: 100px;
-      margin-top: 36px;
-      font-size: 15px;
-      font-weight: 600;
-      transition: transform 0.2s ease, opacity 0.2s ease;
+    .hero-note {
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .03em;
     }
 
-    .cta:hover {
-      transform: translateY(-2px);
-      opacity: 0.9;
+    .hero-circle {
+      position: absolute;
+      width: 425px;
+      height: 425px;
+      border-radius: 50%;
+      background: var(--soft);
+      right: -75px;
+      top: 100px;
     }
 
-    /* INTRO */
+    /* IDEA */
 
-    .section {
-      padding: 120px 0;
-    }
-
-    .section-light {
+    .idea {
       background: var(--paper);
+      padding: 145px 0;
     }
 
-    .two-column {
+    .idea-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 90px;
+      gap: 110px;
       align-items: center;
     }
 
-    .section-label {
-      font-size: 12px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 20px;
+    .idea h2 {
+      max-width: 570px;
     }
 
-    h2 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(40px, 5vw, 64px);
-      line-height: 1.05;
-      font-weight: 500;
-      letter-spacing: -0.03em;
-    }
-
-    .large-copy {
-      font-size: 19px;
+    .idea-text {
       color: var(--muted);
-      margin-top: 25px;
+      font-size: 17px;
+      max-width: 520px;
     }
 
-    /* PERSPECTIVE */
+    .idea-text p + p {
+      margin-top: 30px;
+    }
 
-    .perspective {
-      background: var(--ink);
+    /* HUMAN */
+
+    .human {
+      background: var(--black);
       color: white;
+      padding: 145px 0;
       text-align: center;
-      padding: 140px 20px;
     }
 
-    .perspective h2 {
+    .human .eyebrow {
+      color: #b39770;
+    }
+
+    .human h2 {
       max-width: 850px;
       margin: auto;
     }
 
-    .perspective p {
-      max-width: 620px;
-      margin: 28px auto 0;
-      color: #bcb9b2;
-      font-size: 18px;
+    .human p {
+      max-width: 680px;
+      margin: 34px auto 0;
+      color: #c5c1bb;
+      font-size: 17px;
     }
 
-    /* STEPS */
+    /* NOT AI */
+
+    .not-ai {
+      background: var(--paper);
+      padding: 145px 0;
+    }
+
+    .not-ai-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 120px;
+      align-items: center;
+    }
+
+    .not-ai h2 {
+      max-width: 520px;
+    }
+
+    .not-ai-copy {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 540px;
+    }
+
+    .not-ai-copy strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* ANONYMOUS */
+
+    .anonymous {
+      padding: 145px 0;
+      background: var(--cream);
+    }
+
+    .anonymous-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 110px;
+      align-items: center;
+    }
+
+    .anonymous h2 {
+      max-width: 550px;
+    }
+
+    .anonymous-copy {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 520px;
+    }
+
+    .anonymous-copy p + p {
+      margin-top: 28px;
+    }
+
+    /* HOW IT WORKS */
+
+    .how {
+      padding: 145px 0;
+      background: var(--cream);
+    }
+
+    .how h2 {
+      margin-bottom: 65px;
+    }
 
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      margin-top: 60px;
+      gap: 28px;
     }
 
     .step {
       border-top: 1px solid var(--line);
-      padding-top: 25px;
+      padding-top: 24px;
     }
 
-    .number {
-      font-size: 13px;
+    .step-number {
       color: var(--accent);
+      font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.1em;
+      margin-bottom: 36px;
     }
 
     .step h3 {
-      font-family: "Playfair Display", serif;
-      font-size: 30px;
-      font-weight: 500;
-      margin-top: 35px;
+      margin-bottom: 18px;
     }
 
     .step p {
       color: var(--muted);
-      margin-top: 12px;
+      font-size: 15px;
+      max-width: 310px;
     }
 
-    /* WHAT IT IS */
+    /* WHAT THIS IS */
 
-    .list {
-      margin-top: 35px;
-      list-style: none;
+    .what {
+      background: var(--paper);
+      padding: 145px 0;
     }
 
-    .list li {
-      padding: 15px 0;
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 110px;
+      align-items: start;
+    }
+
+    .what h2 {
+      max-width: 540px;
+    }
+
+    .what-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .what-list div {
+      padding: 18px 0;
       border-bottom: 1px solid var(--line);
       color: var(--muted);
+      font-size: 15px;
     }
 
-    .list li::before {
+    .what-list div::before {
       content: "—";
+      margin-right: 16px;
       color: var(--accent);
-      margin-right: 12px;
     }
 
-    /* CTA SECTION */
+    /* CONTEXT */
 
-    .final-cta {
+    .context {
+      padding: 145px 0;
+      background: var(--cream);
+    }
+
+    .context-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 110px;
+      align-items: center;
+    }
+
+    .context h2 {
+      max-width: 550px;
+    }
+
+    .context-copy {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 520px;
+    }
+
+    .context-copy p + p {
+      margin-top: 28px;
+    }
+
+    /* DISCLAIMER */
+
+    .note {
+      padding: 110px 0;
+      background: var(--soft);
+    }
+
+    .note-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 110px;
+      align-items: start;
+    }
+
+    .note h2 {
+      max-width: 500px;
+    }
+
+    .note-copy {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 520px;
+    }
+
+    .note-copy p + p {
+      margin-top: 25px;
+    }
+
+    /* CTA */
+
+    .cta {
+      padding: 150px 0;
       text-align: center;
-      padding: 140px 20px;
-      background: #e8e0d2;
+      background: #e8dfcf;
     }
 
-    .final-cta h2 {
-      max-width: 750px;
+    .cta h2 {
+      max-width: 800px;
       margin: auto;
     }
 
-    .final-cta p {
-      max-width: 550px;
-      margin: 25px auto 0;
+    .cta p {
+      max-width: 600px;
+      margin: 30px auto 38px;
       color: var(--muted);
       font-size: 18px;
     }
@@ -281,32 +453,44 @@
     /* SUPPORT */
 
     .support {
-      text-align: center;
-      padding: 80px 20px;
       background: var(--paper);
+      padding: 120px 0;
+      text-align: center;
+    }
+
+    .support h2 {
+      margin-bottom: 22px;
     }
 
     .support p {
       color: var(--muted);
-      margin-top: 12px;
+      font-size: 17px;
+      margin-bottom: 32px;
     }
 
-    .coffee {
-      display: inline-block;
-      margin-top: 25px;
+    .support-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       border: 1px solid var(--ink);
-      padding: 13px 22px;
-      border-radius: 100px;
+      border-radius: 999px;
+      padding: 15px 24px;
       font-size: 14px;
       font-weight: 600;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .support-button:hover {
+      background: var(--ink);
+      color: white;
     }
 
     /* FOOTER */
 
     footer {
-      background: var(--paper);
       border-top: 1px solid var(--line);
-      padding: 35px 0;
+      padding: 32px 0;
+      background: var(--paper);
     }
 
     .footer-inner {
@@ -319,9 +503,10 @@
 
     /* MOBILE */
 
-    @media (max-width: 760px) {
+    @media (max-width: 800px) {
+
       .container {
-        width: min(100% - 32px, 1120px);
+        width: min(100% - 36px, 1120px);
       }
 
       nav {
@@ -329,24 +514,43 @@
       }
 
       .hero {
-        min-height: 90vh;
+        min-height: auto;
+        padding: 150px 0 100px;
       }
 
-      .hero-content {
-        padding-top: 60px;
+      .hero-circle {
+        width: 260px;
+        height: 260px;
+        right: -110px;
+        top: 90px;
       }
 
-      .hero-copy {
-        font-size: 17px;
+      h1 {
+        font-size: clamp(48px, 14vw, 72px);
       }
 
-      .section {
-        padding: 85px 0;
+      h2 {
+        font-size: clamp(42px, 11vw, 60px);
       }
 
-      .two-column {
+      .idea,
+      .human,
+      .not-ai,
+      .anonymous,
+      .how,
+      .what,
+      .context {
+        padding: 100px 0;
+      }
+
+      .idea-grid,
+      .not-ai-grid,
+      .anonymous-grid,
+      .what-grid,
+      .context-grid,
+      .note-grid {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 55px;
       }
 
       .steps {
@@ -354,12 +558,16 @@
         gap: 45px;
       }
 
-      .perspective {
-        padding: 100px 20px;
+      .how h2 {
+        margin-bottom: 50px;
       }
 
-      .final-cta {
-        padding: 100px 20px;
+      .cta {
+        padding: 110px 0;
+      }
+
+      .support {
+        padding: 95px 0;
       }
 
       .footer-inner {
@@ -371,240 +579,300 @@
 
 <body>
 
+  <!-- NAVIGATION -->
   <nav>
     <div class="container nav-inner">
-      <div class="logo">I THINK FOR YOU</div>
-      <a href="#how-it-works" class="nav-link">How it works</a>
+      <a href="index.html" class="logo">I THINK FOR YOU</a>
+      <a href="#how" class="nav-link">How it works</a>
     </div>
   </nav>
 
-  <main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-circle"></div>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
+    <div class="container hero-content">
+      <div class="eyebrow">A Third-Person Perspective</div>
 
-          <div class="eyebrow">A third-person perspective</div>
+      <h1>Sometimes you're too close to a problem to see it clearly.</h1>
 
-          <h1>
-            Sometimes you're too close to a problem to see it clearly.
-          </h1>
-
-          <p class="hero-copy">
-            Tell me what's going on. I'll step outside your situation,
-            think it through, and give you another way to look at it.
-          </p>
-
-          <a
-            class="cta"
-            href="https://forms.gle/kfJhWrSjtmmWoPh96"
-            target="_blank"
-            rel="noopener"
-          >
-            Tell Me Your Story
-            <span>→</span>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- INTRO -->
-    <section class="section section-light">
-      <div class="container two-column">
-
-        <div>
-          <div class="section-label">The idea</div>
-          <h2>You know your story. But you may not see it from the outside.</h2>
-        </div>
-
-        <div>
-          <p class="large-copy">
-            When something matters deeply to us, our emotions, assumptions
-            and fears can become part of the problem.
-          </p>
-
-          <p class="large-copy">
-            Sometimes what helps isn't another opinion from someone involved.
-            It's simply another perspective.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- PERSPECTIVE -->
-    <section class="perspective">
-      <div class="container">
-
-        <div class="section-label">Step outside the problem</div>
-
-        <h2>
-          I don't have to live your story to look at it with you.
-        </h2>
-
+      <div class="hero-copy">
         <p>
-          You give me the context. I look at the situation from the outside,
-          without being part of the relationships, emotions or history
-          surrounding it.
+          Tell me what's going on. I'll step outside your situation,
+          think about it as another human being, and give you another
+          way to see what's happening.
+        </p>
+      </div>
+
+      <a href="tell-your-story.html" class="button">
+        GET A THIRD-PERSON PERSPECTIVE — FREE
+        <span>→</span>
+      </a>
+
+      <div class="hero-note">
+        No AI · No judgement · Anonymous
+      </div>
+    </div>
+  </section>
+
+  <!-- THE IDEA -->
+  <section class="idea">
+    <div class="container idea-grid">
+
+      <div>
+        <div class="eyebrow">The Idea</div>
+        <h2>You know your story. But you may not see it from the outside.</h2>
+      </div>
+
+      <div class="idea-text">
+        <p>
+          When something matters deeply to us, our emotions,
+          assumptions and fears can become part of the problem.
         </p>
 
-      </div>
-    </section>
-
-
-    <!-- HOW IT WORKS -->
-    <section class="section" id="how-it-works">
-      <div class="container">
-
-        <div class="section-label">How it works</div>
-        <h2>Three simple steps.</h2>
-
-        <div class="steps">
-
-          <div class="step">
-            <div class="number">01</div>
-            <h3>Tell me</h3>
-            <p>
-              Tell me what happened, who's involved, what you're trying
-              to understand and what you're worried about.
-            </p>
-          </div>
-
-          <div class="step">
-            <div class="number">02</div>
-            <h3>I think</h3>
-            <p>
-              I'll read your situation carefully and consider it from
-              a third-person perspective.
-            </p>
-          </div>
-
-          <div class="step">
-            <div class="number">03</div>
-            <h3>You see another angle</h3>
-            <p>
-              I'll send you a thoughtful perspective that may help you
-              see something you couldn't see from inside the situation.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- WHAT IT IS -->
-    <section class="section section-light">
-      <div class="container two-column">
-
-        <div>
-          <div class="section-label">What this is</div>
-          <h2>Another way to think about what's happening.</h2>
-        </div>
-
-        <div>
-          <ul class="list">
-            <li>A thoughtful outside perspective</li>
-            <li>A place to explain the whole situation</li>
-            <li>An opportunity to slow down and see the bigger picture</li>
-            <li>No judgement</li>
-            <li>No pretending to have all the answers</li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- BOUNDARIES -->
-    <section class="section">
-      <div class="container two-column">
-
-        <div>
-          <div class="section-label">A small but important note</div>
-          <h2>Perspective, not professional advice.</h2>
-        </div>
-
-        <div>
-          <p class="large-copy">
-            I THINK FOR YOU offers a personal perspective based on what
-            you choose to share.
-          </p>
-
-          <p class="large-copy">
-            It isn't a replacement for professional medical, legal,
-            financial or mental-health advice, and it isn't a crisis service.
-          </p>
-
-          <p class="large-copy">
-            You remain responsible for your own decisions.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- FINAL CTA -->
-    <section class="final-cta">
-      <div class="container">
-
-        <div class="section-label">Your turn</div>
-
-        <h2>
-          Tell me what's going on.
-        </h2>
-
         <p>
-          You don't need to know exactly what you're looking for.
-          Just tell the story.
+          Sometimes what helps isn't another opinion from someone
+          involved. It's simply another perspective.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STEP OUTSIDE -->
+  <section class="human">
+    <div class="container">
+
+      <div class="eyebrow">Step Outside The Problem</div>
+
+      <h2>I don't have to live your story to look at it with you.</h2>
+
+      <p>
+        You give me the context. I look at the situation from the
+        outside, without being part of the relationships, emotions
+        or history surrounding it.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- NOT AI -->
+  <section class="not-ai">
+    <div class="container not-ai-grid">
+
+      <div>
+        <div class="eyebrow">A Human Perspective</div>
+        <h2>Not AI. Not an algorithm. Not a chatbot.</h2>
+      </div>
+
+      <div class="not-ai-copy">
+        <p>
+          <strong>Just a human being thinking about your situation.</strong>
         </p>
 
-        <a
-          class="cta"
-          href="https://forms.gle/kfJhWrSjtmmWoPh96"
-          target="_blank"
-          rel="noopener"
-        >
-          Get a Third-Person Perspective
-          <span>→</span>
-        </a>
-
-      </div>
-    </section>
-
-
-    <!-- SUPPORT -->
-    <section class="support">
-      <div class="container">
-
-        <div class="section-label">If it helped</div>
-
-        <h2>Buy me a coffee.</h2>
-
         <p>
-          If the perspective was useful to you, you can support the idea.
+          I read what you share, try to understand the circumstances
+          around it, and look at your situation from a different angle.
         </p>
 
-        <a href="#" class="coffee">
-          ☕ Buy Me a Coffee
-        </a>
+        <p>
+          When useful, I may also research the place, culture,
+          social environment or circumstances behind your story.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ANONYMOUS -->
+  <section class="anonymous">
+    <div class="container anonymous-grid">
+
+      <div>
+        <div class="eyebrow">You Don't Have To Ask Someone You Know</div>
+        <h2>Don't want to ask someone close to you?</h2>
+      </div>
+
+      <div class="anonymous-copy">
+        <p>
+          That's okay.
+        </p>
+
+        <p>
+          Sometimes you don't want advice from someone who knows you,
+          knows the other person, or might judge the situation.
+        </p>
+
+        <p>
+          Tell your story. You can remain anonymous.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="container">
+
+      <div class="eyebrow">How It Works</div>
+      <h2>Three simple steps.</h2>
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Tell me</h3>
+          <p>
+            Tell me what happened, who's involved, what you're trying
+            to understand and what you're worried about.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>I think</h3>
+          <p>
+            I'll read your situation carefully, understand the context
+            and consider it from a Third Person Perspective.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>You see another angle</h3>
+          <p>
+            I'll send you a thoughtful perspective that may help you
+            see something you couldn't see from inside the situation.
+          </p>
+        </div>
 
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
+  <!-- WHAT THIS IS -->
+  <section class="what">
+    <div class="container what-grid">
 
+      <div>
+        <div class="eyebrow">What This Is</div>
+        <h2>Another way to think about what's happening.</h2>
+      </div>
 
+      <div class="what-list">
+        <div>A thoughtful outside perspective</div>
+        <div>A place to explain the whole situation</div>
+        <div>An opportunity to slow down and see the bigger picture</div>
+        <div>No judgement</div>
+        <div>No pretending to have all the answers</div>
+        <div>You remain free to disagree</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTEXT -->
+  <section class="context">
+    <div class="container context-grid">
+
+      <div>
+        <div class="eyebrow">Look At The Bigger Picture</div>
+        <h2>I don't just read your problem. I try to understand the world behind it.</h2>
+      </div>
+
+      <div class="context-copy">
+        <p>
+          Your place. Your culture. Your circumstances. Your people.
+        </p>
+
+        <p>
+          Because the same situation can mean very different things
+          depending on the world around it.
+        </p>
+
+        <p>
+          I'll try to understand that world before I look at the
+          situation from the outside.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <section class="note">
+    <div class="container note-grid">
+
+      <div>
+        <div class="eyebrow">A Small But Important Note</div>
+        <h2>Perspective, not professional advice.</h2>
+      </div>
+
+      <div class="note-copy">
+        <p>
+          I THINK FOR YOU offers a personal perspective based on
+          what you choose to share.
+        </p>
+
+        <p>
+          It isn't a replacement for professional medical, legal,
+          financial or mental-health advice, and it isn't a crisis service.
+        </p>
+
+        <p>
+          You remain responsible for your own decisions.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta">
+    <div class="container">
+
+      <div class="eyebrow">Your Turn</div>
+
+      <h2>Tell me what's going on.</h2>
+
+      <p>
+        You don't need to know exactly what you're looking for.
+        Just tell the story.
+      </p>
+
+      <a href="tell-your-story.html" class="button">
+        GET A THIRD-PERSON PERSPECTIVE — FREE
+        <span>→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- SUPPORT -->
+  <section class="support">
+    <div class="container">
+
+      <div class="eyebrow">If It Helped</div>
+
+      <h2>Buy me a coffee.</h2>
+
+      <p>
+        If the perspective was useful to you, you can support the idea.
+      </p>
+
+      <a href="#" class="support-button">
+        ☕ Buy Me a Coffee
+      </a>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
     <div class="container footer-inner">
       <div>© 2026 I THINK FOR YOU</div>
-      <div>A thoughtful third-person perspective.</div>
+      <div>A thoughtful Third Person Perspective.</div>
     </div>
   </footer>
 
