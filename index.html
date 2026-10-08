@@ -1,880 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>I THINK FOR YOU — A Third-Person Perspective</title>
-
-  <meta name="description" content="Sometimes you're too close to a problem to see it clearly. Tell your story and receive a thoughtful human Third Person Perspective.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --ink: #171717;
-      --muted: #66635e;
-      --cream: #f6f3ed;
-      --paper: #fffdf9;
-      --accent: #8b6f47;
-      --line: #ddd7cd;
-      --soft: #ebe4d7;
-      --black: #171717;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--cream);
-      color: var(--ink);
-      font-family: "DM Sans", sans-serif;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1120px, calc(100% - 48px));
-      margin: auto;
-    }
-
-    /* NAVIGATION */
-
-    nav {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 10;
-      padding: 28px 0;
-    }
-
-    .nav-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: .08em;
-    }
-
-    .nav-link {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    /* TYPOGRAPHY */
-
-    .eyebrow {
-      color: var(--accent);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-family: "Playfair Display", serif;
-      font-weight: 500;
-      letter-spacing: -.035em;
-      line-height: .98;
-    }
-
-    h1 {
-      font-size: clamp(58px, 7vw, 92px);
-      max-width: 760px;
-    }
-
-    h2 {
-      font-size: clamp(46px, 5vw, 68px);
-    }
-
-    h3 {
-      font-size: 29px;
-    }
-
-    .body-large {
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 620px;
-    }
-
-    /* BUTTON */
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      background: var(--ink);
-      color: white;
-      padding: 18px 25px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 600;
-      transition: transform .2s ease, opacity .2s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      opacity: .9;
-    }
-
-    .button span {
-      font-size: 17px;
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 150px 0 110px;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero h1 {
-      margin-bottom: 34px;
-    }
-
-    .hero-copy {
-      margin-bottom: 32px;
-      max-width: 650px;
-    }
-
-    .hero-copy p {
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 600px;
-    }
-
-    .hero-note {
-      margin-top: 20px;
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: .03em;
-    }
-
-    .hero-circle {
-      position: absolute;
-      width: 425px;
-      height: 425px;
-      border-radius: 50%;
-      background: var(--soft);
-      right: -75px;
-      top: 100px;
-    }
-
-    /* IDEA */
-
-    .idea {
-      background: var(--paper);
-      padding: 145px 0;
-    }
-
-    .idea-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 110px;
-      align-items: center;
-    }
-
-    .idea h2 {
-      max-width: 570px;
-    }
-
-    .idea-text {
-      color: var(--muted);
-      font-size: 17px;
-      max-width: 520px;
-    }
-
-    .idea-text p + p {
-      margin-top: 30px;
-    }
-
-    /* HUMAN */
-
-    .human {
-      background: var(--black);
-      color: white;
-      padding: 145px 0;
-      text-align: center;
-    }
-
-    .human .eyebrow {
-      color: #b39770;
-    }
-
-    .human h2 {
-      max-width: 850px;
-      margin: auto;
-    }
-
-    .human p {
-      max-width: 680px;
-      margin: 34px auto 0;
-      color: #c5c1bb;
-      font-size: 17px;
-    }
-
-    /* NOT AI */
-
-    .not-ai {
-      background: var(--paper);
-      padding: 145px 0;
-    }
-
-    .not-ai-grid {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 120px;
-      align-items: center;
-    }
-
-    .not-ai h2 {
-      max-width: 520px;
-    }
-
-    .not-ai-copy {
-      color: var(--muted);
-      font-size: 18px;
-      max-width: 540px;
-    }
-
-    .not-ai-copy strong {
-      color: var(--ink);
-      font-weight: 600;
-    }
-
-    /* ANONYMOUS */
-
-    .anonymous {
-      padding: 145px 0;
-      background: var(--cream);
-    }
-
-    .anonymous-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 110px;
-      align-items: center;
-    }
-
-    .anonymous h2 {
-      max-width: 550px;
-    }
-
-    .anonymous-copy {
-      color: var(--muted);
-      font-size: 18px;
-      max-width: 520px;
-    }
-
-    .anonymous-copy p + p {
-      margin-top: 28px;
-    }
-
-    /* HOW IT WORKS */
-
-    .how {
-      padding: 145px 0;
-      background: var(--cream);
-    }
-
-    .how h2 {
-      margin-bottom: 65px;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    .step {
-      border-top: 1px solid var(--line);
-      padding-top: 24px;
-    }
-
-    .step-number {
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 36px;
-    }
-
-    .step h3 {
-      margin-bottom: 18px;
-    }
-
-    .step p {
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 310px;
-    }
-
-    /* WHAT THIS IS */
-
-    .what {
-      background: var(--paper);
-      padding: 145px 0;
-    }
-
-    .what-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 110px;
-      align-items: start;
-    }
-
-    .what h2 {
-      max-width: 540px;
-    }
-
-    .what-list {
-      border-top: 1px solid var(--line);
-    }
-
-    .what-list div {
-      padding: 18px 0;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .what-list div::before {
-      content: "—";
-      margin-right: 16px;
-      color: var(--accent);
-    }
-
-    /* CONTEXT */
-
-    .context {
-      padding: 145px 0;
-      background: var(--cream);
-    }
-
-    .context-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 110px;
-      align-items: center;
-    }
-
-    .context h2 {
-      max-width: 550px;
-    }
-
-    .context-copy {
-      color: var(--muted);
-      font-size: 18px;
-      max-width: 520px;
-    }
-
-    .context-copy p + p {
-      margin-top: 28px;
-    }
-
-    /* DISCLAIMER */
-
-    .note {
-      padding: 110px 0;
-      background: var(--soft);
-    }
-
-    .note-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 110px;
-      align-items: start;
-    }
-
-    .note h2 {
-      max-width: 500px;
-    }
-
-    .note-copy {
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 520px;
-    }
-
-    .note-copy p + p {
-      margin-top: 25px;
-    }
-
-    /* CTA */
-
-    .cta {
-      padding: 150px 0;
-      text-align: center;
-      background: #e8dfcf;
-    }
-
-    .cta h2 {
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .cta p {
-      max-width: 600px;
-      margin: 30px auto 38px;
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    /* SUPPORT */
-
-    .support {
-      background: var(--paper);
-      padding: 120px 0;
-      text-align: center;
-    }
-
-    .support h2 {
-      margin-bottom: 22px;
-    }
-
-    .support p {
-      color: var(--muted);
-      font-size: 17px;
-      margin-bottom: 32px;
-    }
-
-    .support-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid var(--ink);
-      border-radius: 999px;
-      padding: 15px 24px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: background .2s ease, color .2s ease;
-    }
-
-    .support-button:hover {
-      background: var(--ink);
-      color: white;
-    }
-
-    /* FOOTER */
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 32px 0;
-      background: var(--paper);
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 800px) {
-
-      .container {
-        width: min(100% - 36px, 1120px);
-      }
-
-      nav {
-        padding: 22px 0;
-      }
-
-      .hero {
-        min-height: auto;
-        padding: 150px 0 100px;
-      }
-
-      .hero-circle {
-        width: 260px;
-        height: 260px;
-        right: -110px;
-        top: 90px;
-      }
-
-      h1 {
-        font-size: clamp(48px, 14vw, 72px);
-      }
-
-      h2 {
-        font-size: clamp(42px, 11vw, 60px);
-      }
-
-      .idea,
-      .human,
-      .not-ai,
-      .anonymous,
-      .how,
-      .what,
-      .context {
-        padding: 100px 0;
-      }
-
-      .idea-grid,
-      .not-ai-grid,
-      .anonymous-grid,
-      .what-grid,
-      .context-grid,
-      .note-grid {
-        grid-template-columns: 1fr;
-        gap: 55px;
-      }
-
-      .steps {
-        grid-template-columns: 1fr;
-        gap: 45px;
-      }
-
-      .how h2 {
-        margin-bottom: 50px;
-      }
-
-      .cta {
-        padding: 110px 0;
-      }
-
-      .support {
-        padding: 95px 0;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I THINK FOR YOU — A Third-Person Perspective</title>
+<meta name="description" content="I THINK FOR YOU is a human-to-human Third Person Perspective platform for people who feel stuck, confused, or want to look at a situation differently.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171717;--muted:#66635e;--cream:#f6f3ed;--paper:#fffdf9;--accent:#8b6f47;--line:#ddd7cd;--soft:#ebe4d7;--black:#171717}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.container{width:min(1120px,calc(100% - 48px));margin:auto}
+nav{position:absolute;top:0;left:0;width:100%;z-index:10;padding:28px 0}
+.nav-inner{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:13px;font-weight:600;letter-spacing:.08em}.nav-link{font-size:13px;color:var(--muted)}
+.eyebrow{color:var(--accent);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:28px}
+h1,h2,h3{font-family:"Playfair Display",serif;font-weight:500;letter-spacing:-.035em;line-height:.98}
+h1{font-size:clamp(58px,7vw,92px);max-width:760px}h2{font-size:clamp(46px,5vw,68px)}h3{font-size:29px}
+.button{display:inline-flex;align-items:center;gap:14px;background:var(--ink);color:white;padding:18px 25px;border-radius:999px;font-size:13px;font-weight:600;transition:transform .2s ease,opacity .2s ease}
+.button:hover{transform:translateY(-2px);opacity:.9}.button span{font-size:17px}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:150px 0 110px}
+.hero-content{position:relative;z-index:2}.hero h1{margin-bottom:34px}.hero-copy{margin-bottom:32px;max-width:650px}.hero-copy p{font-size:18px;color:var(--muted);max-width:620px}.hero-note{margin-top:20px;font-size:12px;color:var(--muted);letter-spacing:.03em}
+.hero-circle{position:absolute;width:425px;height:425px;border-radius:50%;background:var(--soft);right:-75px;top:100px}
+.idea{background:var(--paper);padding:145px 0}.idea-grid{display:grid;grid-template-columns:1fr 1fr;gap:110px;align-items:center}.idea h2{max-width:570px}.idea-text{color:var(--muted);font-size:17px;max-width:520px}.idea-text p+p{margin-top:30px}
+.human{background:var(--black);color:white;padding:145px 0;text-align:center}.human .eyebrow{color:#b39770}.human h2{max-width:900px;margin:auto}.human p{max-width:760px;margin:34px auto 0;color:#c5c1bb;font-size:17px}
+.third-person{background:var(--paper);padding:145px 0}.third-person-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:120px;align-items:center}.third-person h2{max-width:540px}.third-person-copy{color:var(--muted);font-size:18px;max-width:560px}.third-person-copy p+p{margin-top:28px}.third-person-copy strong{color:var(--ink);font-weight:600}.question{margin-top:32px;padding-left:22px;border-left:2px solid var(--accent);font-family:"Playfair Display",serif;font-size:25px;line-height:1.2;color:var(--ink)}
+.how{padding:145px 0;background:var(--cream)}.how h2{margin-bottom:65px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}.step{border-top:1px solid var(--line);padding-top:24px}.step-number{color:var(--accent);font-size:12px;font-weight:600;margin-bottom:36px}.step h3{margin-bottom:18px}.step p{color:var(--muted);font-size:15px;max-width:310px}
+.what{background:var(--paper);padding:145px 0}.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:110px;align-items:start}.what h2{max-width:540px}.what-list{border-top:1px solid var(--line)}.what-list div{padding:18px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:15px}.what-list div:before{content:"—";margin-right:16px;color:var(--accent)}
+.note{padding:110px 0;background:var(--soft)}.note-grid{display:grid;grid-template-columns:1fr 1fr;gap:110px;align-items:start}.note h2{max-width:500px}.note-copy{color:var(--muted);font-size:16px;max-width:540px}.note-copy p+p{margin-top:25px}
+.cta{padding:150px 0;text-align:center;background:#e8dfcf}.cta h2{max-width:800px;margin:auto}.cta p{max-width:650px;margin:30px auto 38px;color:var(--muted);font-size:18px}
+.support{background:var(--paper);padding:120px 0;text-align:center}.support h2{margin-bottom:22px}.support p{color:var(--muted);font-size:17px;margin-bottom:32px}.support-button{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);border-radius:999px;padding:15px 24px;font-size:14px;font-weight:600;transition:background .2s ease,color .2s ease}.support-button:hover{background:var(--ink);color:white}
+footer{border-top:1px solid var(--line);padding:32px 0;background:var(--paper)}.footer-inner{display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:13px}
+@media(max-width:800px){.container{width:min(100% - 36px,1120px)}nav{padding:22px 0}.hero{min-height:auto;padding:150px 0 100px}.hero-circle{width:260px;height:260px;right:-110px;top:90px}h1{font-size:clamp(48px,14vw,72px)}h2{font-size:clamp(42px,11vw,60px)}.idea,.human,.third-person,.how,.what,.note{padding:100px 0}.idea-grid,.third-person-grid,.what-grid,.note-grid{grid-template-columns:1fr;gap:55px}.steps{grid-template-columns:1fr;gap:45px}.how h2{margin-bottom:50px}.cta{padding:110px 0}.support{padding:95px 0}.footer-inner{flex-direction:column}}
+</style>
 </head>
-
 <body>
-
-  <!-- NAVIGATION -->
-  <nav>
-    <div class="container nav-inner">
-      <a href="index.html" class="logo">I THINK FOR YOU</a>
-      <a href="#how" class="nav-link">How it works</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-circle"></div>
-
-    <div class="container hero-content">
-      <div class="eyebrow">A Third-Person Perspective</div>
-
-      <h1>Sometimes you're too close to a problem to see it clearly.</h1>
-
-      <div class="hero-copy">
-        <p>
-          Tell me what's going on. I'll step outside your situation,
-          think about it as another human being, and give you another
-          way to see what's happening.
-        </p>
-      </div>
-
-      <a href="tell-your-story.html" class="button">
-        GET A THIRD-PERSON PERSPECTIVE — FREE
-        <span>→</span>
-      </a>
-
-      <div class="hero-note">
-        No AI · No judgement · Anonymous
-      </div>
-    </div>
-  </section>
-
-  <!-- THE IDEA -->
-  <section class="idea">
-    <div class="container idea-grid">
-
-      <div>
-        <div class="eyebrow">The Idea</div>
-        <h2>You know your story. But you may not see it from the outside.</h2>
-      </div>
-
-      <div class="idea-text">
-        <p>
-          When something matters deeply to us, our emotions,
-          assumptions and fears can become part of the problem.
-        </p>
-
-        <p>
-          Sometimes what helps isn't another opinion from someone
-          involved. It's simply another perspective.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- STEP OUTSIDE -->
-  <section class="human">
-    <div class="container">
-
-      <div class="eyebrow">Step Outside The Problem</div>
-
-      <h2>I don't have to live your story to look at it with you.</h2>
-
-      <p>
-        You give me the context. I look at the situation from the
-        outside, without being part of the relationships, emotions
-        or history surrounding it.
-      </p>
-
-    </div>
-  </section>
-
-  <!-- NOT AI -->
-  <section class="not-ai">
-    <div class="container not-ai-grid">
-
-      <div>
-        <div class="eyebrow">A Human Perspective</div>
-        <h2>Not AI. Not an algorithm. Not a chatbot.</h2>
-      </div>
-
-      <div class="not-ai-copy">
-        <p>
-          <strong>Just a human being thinking about your situation.</strong>
-        </p>
-
-        <p>
-          I read what you share, try to understand the circumstances
-          around it, and look at your situation from a different angle.
-        </p>
-
-        <p>
-          When useful, I may also research the place, culture,
-          social environment or circumstances behind your story.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ANONYMOUS -->
-  <section class="anonymous">
-    <div class="container anonymous-grid">
-
-      <div>
-        <div class="eyebrow">You Don't Have To Ask Someone You Know</div>
-        <h2>Don't want to ask someone close to you?</h2>
-      </div>
-
-      <div class="anonymous-copy">
-        <p>
-          That's okay.
-        </p>
-
-        <p>
-          Sometimes you don't want advice from someone who knows you,
-          knows the other person, or might judge the situation.
-        </p>
-
-        <p>
-          Tell your story. You can remain anonymous.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="how" id="how">
-    <div class="container">
-
-      <div class="eyebrow">How It Works</div>
-      <h2>Three simple steps.</h2>
-
-      <div class="steps">
-
-        <div class="step">
-          <div class="step-number">01</div>
-          <h3>Tell me</h3>
-          <p>
-            Tell me what happened, who's involved, what you're trying
-            to understand and what you're worried about.
-          </p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">02</div>
-          <h3>I think</h3>
-          <p>
-            I'll read your situation carefully, understand the context
-            and consider it from a Third Person Perspective.
-          </p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">03</div>
-          <h3>You see another angle</h3>
-          <p>
-            I'll send you a thoughtful perspective that may help you
-            see something you couldn't see from inside the situation.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- WHAT THIS IS -->
-  <section class="what">
-    <div class="container what-grid">
-
-      <div>
-        <div class="eyebrow">What This Is</div>
-        <h2>Another way to think about what's happening.</h2>
-      </div>
-
-      <div class="what-list">
-        <div>A thoughtful outside perspective</div>
-        <div>A place to explain the whole situation</div>
-        <div>An opportunity to slow down and see the bigger picture</div>
-        <div>No judgement</div>
-        <div>No pretending to have all the answers</div>
-        <div>You remain free to disagree</div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CONTEXT -->
-  <section class="context">
-    <div class="container context-grid">
-
-      <div>
-        <div class="eyebrow">Look At The Bigger Picture</div>
-        <h2>I don't just read your problem. I try to understand the world behind it.</h2>
-      </div>
-
-      <div class="context-copy">
-        <p>
-          Your place. Your culture. Your circumstances. Your people.
-        </p>
-
-        <p>
-          Because the same situation can mean very different things
-          depending on the world around it.
-        </p>
-
-        <p>
-          I'll try to understand that world before I look at the
-          situation from the outside.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- DISCLAIMER -->
-  <section class="note">
-    <div class="container note-grid">
-
-      <div>
-        <div class="eyebrow">A Small But Important Note</div>
-        <h2>Perspective, not professional advice.</h2>
-      </div>
-
-      <div class="note-copy">
-        <p>
-          I THINK FOR YOU offers a personal perspective based on
-          what you choose to share.
-        </p>
-
-        <p>
-          It isn't a replacement for professional medical, legal,
-          financial or mental-health advice, and it isn't a crisis service.
-        </p>
-
-        <p>
-          You remain responsible for your own decisions.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="cta">
-    <div class="container">
-
-      <div class="eyebrow">Your Turn</div>
-
-      <h2>Tell me what's going on.</h2>
-
-      <p>
-        You don't need to know exactly what you're looking for.
-        Just tell the story.
-      </p>
-
-      <a href="tell-your-story.html" class="button">
-        GET A THIRD-PERSON PERSPECTIVE — FREE
-        <span>→</span>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- SUPPORT -->
-  <section class="support">
-    <div class="container">
-
-      <div class="eyebrow">If It Helped</div>
-
-      <h2>Buy me a coffee.</h2>
-
-      <p>
-        If the perspective was useful to you, you can support the idea.
-      </p>
-
-      <a href="#" class="support-button">
-        ☕ Buy Me a Coffee
-      </a>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container footer-inner">
-      <div>© 2026 I THINK FOR YOU</div>
-      <div>A thoughtful Third Person Perspective.</div>
-    </div>
-  </footer>
-
+<nav><div class="container nav-inner"><a href="index.html" class="logo">I THINK FOR YOU</a><a href="#how" class="nav-link">How it works</a></div></nav>
+
+<section class="hero">
+<div class="hero-circle"></div>
+<div class="container hero-content">
+<div class="eyebrow">Welcome to I Think For You</div>
+<h1>Sometimes you're too close to a problem to see it clearly.</h1>
+<div class="hero-copy">
+<p><strong>I THINK FOR YOU is a human-to-human Third Person Perspective (TPP) platform for people who feel stuck, confused, or simply want to look at a situation differently.</strong></p>
+<p style="margin-top:22px">Tell me what happened. I'll step outside your situation, think it through, and give you a fresh perspective.</p>
+<p style="margin-top:22px"><strong>No AI. No judgement. No advice pretending to be an answer. Just another human thinking with you.</strong></p>
+<p style="margin-top:22px">You don't need to share your name or location.</p>
+</div>
+<a href="tell-your-story.html" class="button">GET A THIRD PERSON PERSPECTIVE — FREE <span>→</span></a>
+<div class="hero-note">Your story stays between us.</div>
+</div>
+</section>
+
+<section class="idea"><div class="container idea-grid">
+<div><div class="eyebrow">Why I Think For You</div><h2>Sometimes, all we need is another human being to think with us.</h2></div>
+<div class="idea-text">
+<p>We all get stuck inside our own thoughts.</p>
+<p>When something matters deeply to us, emotions, fear, expectations and assumptions can make it difficult to see what's actually happening.</p>
+<p>I'm a regular person, just like you.</p>
+<p>I studied <strong>human communication and psychology</strong>, and I've always had a genuine interest in understanding people, situations and the way we think.</p>
+<p>I believe that sometimes, <strong>the right perspective at the right time can save us from making a decision we'll spend years regretting.</strong></p>
+<p>That's why I think for you.</p>
+</div>
+</div></section>
+
+<section class="human"><div class="container">
+<div class="eyebrow">The idea</div>
+<h2>You bring the story.<br>I bring the distance.</h2>
+<p>You don't need someone to live your story to look at it with you. You give me the context. I step outside the situation and think about it without being part of the relationships, emotions or history surrounding it.</p>
+</div></section>
+
+<section class="third-person"><div class="container third-person-grid">
+<div><div class="eyebrow">Why Third Person Perspective</div><h2>You know the situation.<br>You don't always see the situation.</h2></div>
+<div class="third-person-copy">
+<p>When we're inside a problem, we see it through our own emotions, history, fears and expectations.</p>
+<p>That's why we naturally turn to other people.</p>
+<p>But asking someone close to you isn't always easy. They may know the people involved. They may have their own opinions. You may be afraid of being judged — or simply afraid to tell them the whole story.</p>
+<p><strong>Sometimes, what you need isn't another opinion.</strong></p>
+<p><strong>It's an outside perspective.</strong></p>
+<p>A person who doesn't know you, doesn't know the people involved, and isn't emotionally invested in the outcome.</p>
+<p>Someone who can simply look at what you've told them and ask:</p>
+<div class="question">“What might this look like from the outside?”</div>
+<p style="margin-top:32px">That, for me, is a <strong>Third Person Perspective.</strong></p>
+</div>
+</div></section>
+
+<section class="how" id="how"><div class="container">
+<div class="eyebrow">How It Works</div><h2>Three simple steps.</h2>
+<div class="steps">
+<div class="step"><div class="step-number">01</div><h3>Tell me</h3><p>Tell me what happened, who's involved, what you're trying to understand and what you're worried about.</p></div>
+<div class="step"><div class="step-number">02</div><h3>I think</h3><p>I'll carefully read your story and step outside the situation to consider it from a Third Person Perspective.</p></div>
+<div class="step"><div class="step-number">03</div><h3>You see another angle</h3><p>I'll send you a thoughtful perspective that may help you see something you couldn't see from inside the situation.</p></div>
+</div>
+</div></section>
+
+<section class="what"><div class="container what-grid">
+<div><div class="eyebrow">What This Is</div><h2>Another way to think about what's happening.</h2></div>
+<div class="what-list">
+<div>A thoughtful outside perspective</div><div>A place to explain the whole situation</div><div>An opportunity to slow down and see the bigger picture</div><div>No judgement</div><div>No pretending to have all the answers</div><div>You remain free to disagree</div>
+</div>
+</div></section>
+
+<section class="note"><div class="container note-grid">
+<div><div class="eyebrow">A Small But Important Note</div><h2>Perspective, not professional advice.</h2></div>
+<div class="note-copy">
+<p>I THINK FOR YOU isn't here to tell you what to do.</p>
+<p>You already have your own mind, your own values and your own life to live.</p>
+<p>Sometimes, you don't need someone to give you a solution. <strong>You just need someone to help you see the situation from another angle.</strong></p>
+<p>I THINK FOR YOU is not a replacement for a psychiatrist, psychologist, doctor, lawyer, financial advisor or other qualified professional.</p>
+<p>It is not a crisis service.</p>
+<p><strong>It's simply one human being taking the time to think carefully about what another human being has shared.</strong></p>
+<p>You remain responsible for your own decisions.</p>
+</div>
+</div></section>
+
+<section class="cta"><div class="container">
+<div class="eyebrow">Your Turn</div><h2>Tell me what's going on.</h2>
+<p>You don't need to know exactly what you're looking for. Just tell the story.</p>
+<a href="tell-your-story.html" class="button">GET A THIRD PERSON PERSPECTIVE — FREE <span>→</span></a>
+</div></section>
+
+<section class="support"><div class="container">
+<div class="eyebrow">If It Helped</div><h2>Buy me a coffee.</h2>
+<p>If the perspective was useful to you, you can support the idea.</p>
+<a href="https://www.paypal.com/ncp/payment/ADMZGSZSA9PAU" class="support-button" target="_blank" rel="noopener noreferrer">☕ Buy Me a Coffee</a>
+</div></section>
+
+<footer><div class="container footer-inner"><div>© 2026 I THINK FOR YOU</div><div>A thoughtful Third Person Perspective.</div></div></footer>
 </body>
 </html>
